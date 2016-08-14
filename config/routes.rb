@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'home/index'
 
+  delete "logout" => "sessions#logout"
+
   get 'sessions/new'
 
   post 'sessions/create'

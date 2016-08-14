@@ -5,11 +5,20 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(name: user_params[:name]).try(:authenticate, user_params[:password])
     if user
-      render plain: sprintf("welcome, %s!", user.name)
+      session[:user_id] = user.id
+      session[:name] = user.name
+      #render plain: sprintf("welcome, %s!", user.name)
+      redirect_to "/home/index"
     else
       flash.now[:login_error] = "invalid username or password"
       render "new"
     end
+  end
+
+  def logout
+    session[:user_id] = nil
+    session[:name] = nil
+    redirect_to "/sessions/new"
   end
 
   private

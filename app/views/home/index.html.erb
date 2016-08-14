@@ -1,2 +1,10 @@
+<% if session[:user_id].present? %>
+hi, <%= session[:name] %>, welcome
+<%= link_to "sign out", logout_path, method: :delete, data: { confirm: 'Are you sure?' }%>
+<% else %>
+
+<% end %>
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
+
+
