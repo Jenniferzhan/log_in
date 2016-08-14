@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
   def logout
     session[:user_id] = nil
     session[:name] = nil
-    redirect_to "/sessions/new"
+    redirect_to "/home/index"
   end
 
   private
